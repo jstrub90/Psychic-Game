@@ -3,7 +3,7 @@ var alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l',
 
 var wins = 0;
 var losses = 0;
-var guessesLeft = 9;
+var guessesLeft = 10;
 var guessedLetters = []
 
 var winsText = document.getElementById("wins-text");
@@ -20,16 +20,28 @@ document.onkeyup = function(event) {
 
     if(userGuess === computerChoice){
         wins++;
-        winsText.textContent = "Wins: " + wins;    
+        winsText.textContent = "Wins: " + wins; 
+        guessedLetters = [];
+        alert("You Won!");  
+        randomIndex = alphabet[Math.floor(Math.random() * alphabet.length)];
+        computerChoice = alphabet[randomIndex];
     }else{
         guessesLeft--;
         guessesLeftText.textContent = "Guesses Left: " + guessesLeft;
+        guessedLetters.push(userGuess);
+        guessesText.textContent = "Your guesses so far: " + guessedLetters;
+
     }
     if(guessesLeft = 0){
         losses++;
         lossesText.textContent = "Losses: " + losses;
+        alert("You Lost!");
+        randomIndex = alphabet[Math.floor(Math.random() * alphabet.length)];
+        computerChoice = alphabet[randomIndex];
+        guessesLeft = 10;
+
     }
 
-    guessesText.textContent = "Your guesses so far: " + userGuess;
+    
 
 }
