@@ -32,16 +32,15 @@ document.onkeyup = function(event) {
         guessesText.textContent = "Your guesses so far: " + guessedLetters;
 
     }
-    if(guessesLeft = 0){
+    if(guessesLeft == 0){
         losses++;
         lossesText.textContent = "Losses: " + losses;
         alert("You Lost!");
         randomIndex = alphabet[Math.floor(Math.random() * alphabet.length)];
         computerChoice = alphabet[randomIndex];
         guessesLeft = 10;
-
-    }
-
-    
+        guessesLeftText.textContent = "Your guesses so far: " + guessesLeft;
+        guessedLetters = [];
+    }  
 
 }
